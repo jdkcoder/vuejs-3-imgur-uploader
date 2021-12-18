@@ -13,7 +13,7 @@ body {
   color: #fff;
   margin-top: 60px;
 }
-#img_thumb {
+#thumb {
   height: 300px;
 }
 img {
@@ -25,7 +25,7 @@ img {
   <img src="https://i.imgur.com/X4z0q8g.png" />
   <br /><br />
   <input
-    v-show="!imgur_url"
+    v-show="!imgurURL"
     type="file"
     id="image_file"
     @change="onFileChange"
@@ -33,13 +33,13 @@ img {
     accept="image/*"
     required
   />
-  <button v-show="imgur_url" type="button" @click="refreshNewImg">
+  <button v-show="imgurURL" type="button" @click="refreshNewImg">
     Upload New One
   </button>
   <br />
-  <p>URL: {{ imgur_url }}</p>
+  <p>URL: {{ imgurURL }}</p>
   <br />
-  <img :src="img_thumb" id="img_thumb" />
+  <img :src="thumb" id="thumb" />
 </template>
 
 <script>
@@ -49,9 +49,9 @@ export default {
     return {
       loading_gif:
         'https://i.pinimg.com/originals/a4/f2/cb/a4f2cb80ff2ae2772e80bf30e9d78d4c.gif',
-      img_thumb_sample: 'https://i.imgur.com/UoRevba.gif',
-      img_thumb: null,
-      imgur_url: null,
+      thumbSample: 'https://i.imgur.com/UoRevba.gif',
+      thumb: null,
+      imgurURL: null,
     };
   },
   methods: {
@@ -61,8 +61,8 @@ export default {
         return;
       }
 
-      this.img_thumb = this.loading_gif;
-      this.imgur_url = 'Uploading...';
+      this.thumb = this.loading_gif;
+      this.imgurURL = 'Uploading...';
 
       let formdata = new FormData();
 
@@ -83,21 +83,21 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
-          this.imgur_url = res.data.data.link;
-          this.img_thumb = res.data.data.link;
+          this.imgurURL = res.data.data.link;
+          this.thumb = res.data.data.link;
         })
         .catch((err) => {
           console.log(err);
         });
     },
     refreshNewImg() {
-      this.imgur_url = '';
+      this.imgurURL = '';
       document.getElementById('image_file').value = '';
-      this.img_thumb = this.img_thumb_sample;
+      this.thumb = this.thumbSample;
     },
   },
   created() {
-    this.img_thumb = this.img_thumb_sample;
+    this.thumb = this.thumbSample;
   },
 };
 </script>
