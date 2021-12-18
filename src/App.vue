@@ -47,7 +47,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      loading_gif:
+      loading:
         'https://i.pinimg.com/originals/a4/f2/cb/a4f2cb80ff2ae2772e80bf30e9d78d4c.gif',
       thumbSample: 'https://i.imgur.com/UoRevba.gif',
       thumb: null,
@@ -61,7 +61,7 @@ export default {
         return;
       }
 
-      this.thumb = this.loading_gif;
+      this.thumb = this.loading;
       this.imgurURL = 'Uploading...';
 
       let formdata = new FormData();
