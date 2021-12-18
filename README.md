@@ -1,3 +1,3 @@
-# vue-ggyqf7
+# vuejs-3-imgur-uploader
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/vue-ggyqf7)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/imgur-uploader)
